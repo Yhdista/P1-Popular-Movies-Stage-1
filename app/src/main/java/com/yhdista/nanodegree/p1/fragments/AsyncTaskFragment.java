@@ -68,7 +68,7 @@ public class AsyncTaskFragment extends MyBasicDialogFragment implements AsyncTas
 
         // TODO is there any way to solve this warning withou supressing it?
         //noinspection unchecked
-        mCallback = (DatasetCallbacks<Movie>) mFragmentManager.findFragmentByTag(C.TAG_FRAGMENT_MAIN_ACTIVITY);
+        mCallback = (DatasetCallbacks<Movie>) mFragmentManager.findFragmentByTag(C.TAG_FRAGMENT_MAIN);
 
     }
 

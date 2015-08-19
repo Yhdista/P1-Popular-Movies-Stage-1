@@ -48,7 +48,7 @@ public class SettingDialog extends MyBasicDialogFragment {
         dialog.setItems(SortItems.getSortItemsNames(), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                ((DatasetCallbacks) mFragmentManager.findFragmentByTag(C.TAG_FRAGMENT_MAIN_ACTIVITY)).sortBy(which);
+                ((DatasetCallbacks) mFragmentManager.findFragmentByTag(C.TAG_FRAGMENT_MAIN)).sortBy(which);
             }
         });
 

@@ -105,6 +105,11 @@ public class MoviesGridViewAdapter extends BaseAdapter {
 
     }
 
+    /**
+     * Set the selected position in the list by ItemClick
+     *
+     * @param position
+     */
     public void setItemSelected(int position) {
         mItemSelected = position;
     }
@@ -127,6 +132,7 @@ public class MoviesGridViewAdapter extends BaseAdapter {
         private static final AbsListView.LayoutParams PARAMS3_LANDSCAPE;
 
         static {
+
             int width;
             int height;
             int currentapiVersion = Build.VERSION.SDK_INT;

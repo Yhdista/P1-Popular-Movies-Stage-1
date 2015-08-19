@@ -34,8 +34,6 @@ public class MainActivity extends MyAppCompatActivity {
 
         UtilsActivity.setToolbarAsSupportActionBar(this, mToolbar, R.id.my_toolbar);
 
-        // mToolbar.setTitleTextColor(getResources().getColor(R.color.primary_text_default_material_dark, getTheme()));
-        // mToolbar.setBackgroundColor(getResources().getColor(R.color.background_material_dark, getTheme()));
 
     }
 

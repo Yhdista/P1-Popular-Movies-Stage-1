@@ -17,7 +17,7 @@ public class C {
     // fragments
     public static final String TAG_FRAGMENT_PROGRESS_DIALOG = "activityProgressDialog";
     public static final String TAG_FRAGMENT_ASYNC_TASK = "fragmentAsyncTask";
-    public static final String TAG_FRAGMENT_MAIN_ACTIVITY = "fragmentMainActivity";
+    public static final String TAG_FRAGMENT_MAIN = "fragmentMainActivity";
     public static final String TAG_FRAGMENT_SETTING_DIALOG = "fragmentSettingDialog" ;
 
     // exceptions
