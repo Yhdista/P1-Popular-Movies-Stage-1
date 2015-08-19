@@ -25,9 +25,10 @@ public class Movie implements Parcelable {
     public static final String TAG_RELEASE_DATE = "release_date";
     public static final String TAG_POSTER_PATH = "poster_path";
     public static final String TAG_VOTE_AVERAGE = "vote_average";
+    public static final String TAG_POPULARITY = "popularity";
 
     // TODO preparation for next project
-    boolean mAdult;             // adult	:	false
+    private boolean mAdult;             // adult	:	false
     private String mBackdropPath;       // backdrop_path	:	/kvXLZqY0Ngl1XSw7EaMQO0C1CCj.jpg
     // genre_ids		[3]
     // 0	:	28
@@ -39,7 +40,7 @@ public class Movie implements Parcelable {
     private String mOverview;           // overview	:	Armed with the astonishing ability to shrink in scale but increase in strength, con-man Scott Lang must embrace his inner-hero and help his mentor, Dr. Hank Pym, protect the secret behind his spectacular Ant-Man suit from a new generation of towering threats. Against seemingly insurmountable obstacles, Pym and Lang must plan and pull off a heist that will save the world.
     private Date mReleaseDate;          // release_date	:	2015-07-17
     private String mPosterPath;         // poster_path	:	/7SGGUiTE6oc2fh9MjIk5M00dsQd.jpg
-    double mPopularity;         // popularity	:	52.680889
+    private double mPopularity;         // popularity	:	52.680889
     private String mTitle;              // title	:	Ant-Man
     boolean mVideo;             // video	:	false
     private double mVoteAverage;        // vote_average	:	7.1
@@ -51,15 +52,12 @@ public class Movie implements Parcelable {
 
     private Movie(Builder builder) {
 
-        // Required parameters
         mTitle = builder.mTitle;
         mPosterPath = builder.mPosterPath;
-
-        // Optional parameters
-        //mId = builder.mId;
         mOverview = builder.mOverview;
         mVoteAverage = builder.mUserRating;
         mReleaseDate = builder.mReleaseDate;
+        mPopularity = builder.mPopularity;
 
     }
 
@@ -73,6 +71,7 @@ public class Movie implements Parcelable {
         mTitle = in.readString();
         mVoteAverage = in.readDouble();
         mReleaseDate = UtilsDate.getDateFromMillis(in.readLong());
+        mPopularity = in.readDouble();
         // TODO dont forget to write down all variables here later!
     }
 
@@ -87,6 +86,7 @@ public class Movie implements Parcelable {
         dest.writeString(mTitle);
         dest.writeDouble(mVoteAverage);
         dest.writeLong(getReleaseDateInMillis());
+        dest.writeDouble(mPopularity);
         // TODO dont forget to write down all variables here later!
     }
 
@@ -131,20 +131,23 @@ public class Movie implements Parcelable {
         return UtilsDate.getTimeAsYear(mReleaseDate);
     }
 
+    public double getPopularity() {
+        return mPopularity;
+    }
+
     /**
      * Movie Builder pattern
      */
     public static class Builder {
 
-        // Required parameters
+
         private final String mTitle;
         private final String mPosterPath;
-
-        // Optional parameters - initialize with default values
-        private Long mId;
+        private long mId;
         private String mOverview;
-        private Double mUserRating;
+        private double mUserRating;
         private Date mReleaseDate;
+        private double mPopularity;
 
         /**
          * Builder pattern for creating Movie element
@@ -157,7 +160,7 @@ public class Movie implements Parcelable {
             mPosterPath = path;
         }
 
-        public Builder setId(Long id) {
+        public Builder setId(long id) {
             mId = id;
             return this;
         }
@@ -167,13 +170,18 @@ public class Movie implements Parcelable {
             return this;
         }
 
-        public Builder setUserRating(Double rating) {
+        public Builder setUserRating(double rating) {
             mUserRating = rating;
             return this;
         }
 
         public Builder setReleaseDate(Date date) {
             mReleaseDate = date;
+            return this;
+        }
+
+        public Builder setPopularity(double popularity) {
+            mPopularity = popularity;
             return this;
         }
 

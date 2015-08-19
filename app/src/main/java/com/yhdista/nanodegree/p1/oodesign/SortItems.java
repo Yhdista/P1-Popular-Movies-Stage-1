@@ -5,7 +5,7 @@ package com.yhdista.nanodegree.p1.oodesign;
  */
 public enum SortItems {
 
-    TITLE(0, "title"), HIGHEST_RATED(1, "highest-rated"), LOWES_RATED(2, "lowest-rated");
+    TITLE(0, "title"), POPULARITY(1, "popularity"), HIGHEST_RATED(2, "highest-rated"), LOWES_RATED(3, "lowest-rated");
 
     private final int position;
     private final String name;

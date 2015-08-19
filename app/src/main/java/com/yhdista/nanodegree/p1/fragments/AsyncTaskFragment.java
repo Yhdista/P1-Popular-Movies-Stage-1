@@ -215,6 +215,7 @@ public class AsyncTaskFragment extends MyBasicDialogFragment implements AsyncTas
                             .setOverview(item.getString(Movie.TAG_OVERVIEW))
                             .setUserRating(item.getDouble(Movie.TAG_VOTE_AVERAGE))
                             .setReleaseDate(UtilsDate.parseDate_YYYY_MM_DD(item.getString(Movie.TAG_RELEASE_DATE)))
+                            .setPopularity(item.getDouble(Movie.TAG_POPULARITY))
                             .build();
                     movies.add(movie);
 

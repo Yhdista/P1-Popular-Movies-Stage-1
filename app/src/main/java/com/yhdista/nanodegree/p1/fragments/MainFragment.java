@@ -166,6 +166,8 @@ public class MainFragment extends MyBasicFragment implements DatasetCallbacks<Mo
 
                 if (which == SortItems.TITLE.getPosition()) {
                     return lhs.getTitle().compareTo(rhs.getTitle());
+                } else if (which == SortItems.POPULARITY.getPosition()) {
+                    return UtilsMath.compareDouble(rhs.getPopularity(), lhs.getPopularity());
                 } else if (which == SortItems.HIGHEST_RATED.getPosition()) {
                     return UtilsMath.compareDouble(rhs.getUserRating(), lhs.getUserRating());
                 } else if (which == SortItems.LOWES_RATED.getPosition()) {
@@ -177,8 +179,6 @@ public class MainFragment extends MyBasicFragment implements DatasetCallbacks<Mo
         mAdapter.notifyDataSetChanged();
 
     }
-
-
 
     private void startDetailActivity(Movie movie) {
         Intent intent = new Intent(mActivity, DetailActivity.class);
@@ -196,7 +196,6 @@ public class MainFragment extends MyBasicFragment implements DatasetCallbacks<Mo
             }
         });
     }
-
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
