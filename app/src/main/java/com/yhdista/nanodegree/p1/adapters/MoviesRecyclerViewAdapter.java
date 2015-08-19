@@ -1,3 +1,7 @@
+/*
+ * Copyright (C) 2013 The Android Open Source Project
+ */
+
 package com.yhdista.nanodegree.p1.adapters;
 
 import android.content.Context;
@@ -127,10 +131,7 @@ public class MoviesRecyclerViewAdapter extends RecyclerView.Adapter<MoviesRecycl
 
         v.setLayoutParams(params);
 
-        // set the view's size, margins, paddings and layout parameters
-        //...
-        ViewHolder vh = new ViewHolder(v);
-        return vh;
+        return new ViewHolder(v);
     }
 
     // Replace the contents of a view (invoked by the layout manager)

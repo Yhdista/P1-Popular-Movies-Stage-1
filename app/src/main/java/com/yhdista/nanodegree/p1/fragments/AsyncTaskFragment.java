@@ -1,3 +1,7 @@
+/*
+ * Copyright (C) 2013 The Android Open Source Project
+ */
+
 package com.yhdista.nanodegree.p1.fragments;
 
 
@@ -36,13 +40,10 @@ public class AsyncTaskFragment extends MyBasicDialogFragment implements AsyncTas
             "http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=86c8739ce30448eae621740714048022";
     //"http://api.themoviedb.org/3/discover/movie?with_genres=18&primary_release_year=2014&api_key=86c8739ce30448eae621740714048022";
 
-    private JsonObjectRequest mVolleyRequest;
-
     private WeakReference<MyAsyncTask> mTask;
 
 
-    private DataListCallbacks mCallback;
-    private String mUrl = DOWNLOAD_URL;
+    private DataListCallbacks<Movie> mCallback;
 
     public static AsyncTaskFragment newRetainedInstance() {
 
@@ -63,7 +64,9 @@ public class AsyncTaskFragment extends MyBasicDialogFragment implements AsyncTas
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mCallback = (DataListCallbacks) mFragmentManager.findFragmentByTag(C.TAG_FRAGMENT_MAIN_ACTIVITY);
+        // TODO is there any way to solve this warning withou supressing it?
+        //noinspection unchecked
+        mCallback = (DataListCallbacks<Movie>) mFragmentManager.findFragmentByTag(C.TAG_FRAGMENT_MAIN_ACTIVITY);
 
     }
 
@@ -73,7 +76,7 @@ public class AsyncTaskFragment extends MyBasicDialogFragment implements AsyncTas
 
 
         // Volley's json object request object
-        mVolleyRequest = new JsonObjectRequest(mUrl, new MyVolleyResponseListener(this),
+        JsonObjectRequest mVolleyRequest = new JsonObjectRequest(DOWNLOAD_URL, new MyVolleyResponseListener(this),
                 new MyVolleyResponseErrorListener(this));
 
         // adding request to request queue
@@ -96,9 +99,9 @@ public class AsyncTaskFragment extends MyBasicDialogFragment implements AsyncTas
 
     private static class MyVolleyResponseListener implements Response.Listener<JSONObject> {
 
-        private final WeakReference<StartTaskInterface> callback;
+        private final WeakReference<StartTaskInterface<JSONObject>> callback;
 
-        MyVolleyResponseListener(StartTaskInterface callback) {
+        MyVolleyResponseListener(StartTaskInterface<JSONObject> callback) {
             this.callback = new WeakReference<>(callback);
         }
 
@@ -181,10 +184,10 @@ public class AsyncTaskFragment extends MyBasicDialogFragment implements AsyncTas
         private static final long MILLIS_FOR_SLEEP = 0;
 
 
-        final WeakReference<AsyncTaskCallbacks> mCallback;
+        final WeakReference<AsyncTaskCallbacks<Movie>> mCallback;
 
 
-        MyAsyncTask(AsyncTaskCallbacks callback) {
+        MyAsyncTask(AsyncTaskCallbacks<Movie> callback) {
             mCallback = new WeakReference<>(callback);
         }
 
@@ -275,7 +278,7 @@ public class AsyncTaskFragment extends MyBasicDialogFragment implements AsyncTas
                 publishProgress(C.ErrorTag.GENERIC_EXCEPTION);
             }
 */
-            return Collections.EMPTY_LIST;
+            return Collections.emptyList();
 
 
         }

@@ -1,6 +1,11 @@
+/*
+ * Copyright (C) 2013 The Android Open Source Project
+ */
+
 package com.yhdista.nanodegree.p1.abstracts;
 
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,7 +15,7 @@ import android.widget.AdapterView;
 
 
 /**
- * Custom template for general Activity
+ * Custom template for general compat Activity
  */
 public abstract class MyAppCompatActivity extends AppCompatActivity {
 
@@ -21,8 +26,15 @@ public abstract class MyAppCompatActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
-/*
         // Strict Mode
+        //setStrictMode();
+
+        super.onCreate(savedInstanceState);
+
+    }
+
+    // turn on full StrictMode
+    private static void setStrictMode() {
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectAll()
                 .penaltyLog()
@@ -31,10 +43,6 @@ public abstract class MyAppCompatActivity extends AppCompatActivity {
         StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll()
                 .penaltyLog()
                 .build());
-*/
-
-        super.onCreate(savedInstanceState);
-
     }
 
 

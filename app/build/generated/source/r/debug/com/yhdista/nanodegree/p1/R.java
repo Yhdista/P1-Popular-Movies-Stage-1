@@ -1552,7 +1552,6 @@ containing a value of this type.
         public static final int primary_text_default_material_light=0x7f0b0031;
         public static final int primary_text_disabled_material_dark=0x7f0b0032;
         public static final int primary_text_disabled_material_light=0x7f0b0033;
-        public static final int primary_text_material_light=0x7f0b0048;
         public static final int ripple_material_dark=0x7f0b0034;
         public static final int ripple_material_light=0x7f0b0035;
         public static final int secondary_text_default_material_dark=0x7f0b0036;
@@ -1561,8 +1560,8 @@ containing a value of this type.
         public static final int secondary_text_disabled_material_light=0x7f0b0039;
         public static final int switch_thumb_disabled_material_dark=0x7f0b003a;
         public static final int switch_thumb_disabled_material_light=0x7f0b003b;
-        public static final int switch_thumb_material_dark=0x7f0b0049;
-        public static final int switch_thumb_material_light=0x7f0b004a;
+        public static final int switch_thumb_material_dark=0x7f0b0048;
+        public static final int switch_thumb_material_light=0x7f0b0049;
         public static final int switch_thumb_normal_material_dark=0x7f0b003c;
         public static final int switch_thumb_normal_material_light=0x7f0b003d;
     }
@@ -1926,7 +1925,8 @@ containing a value of this type.
         public static final int action_settings=0x7f06001e;
         public static final int app_detail_name=0x7f06001f;
         public static final int app_main_name=0x7f060020;
-        public static final int hello_world=0x7f060021;
+        public static final int default_text=0x7f060021;
+        public static final int hello_world=0x7f060022;
         public static final int status_bar_notification_info_overflow=0x7f060011;
     }
     public static final class style {

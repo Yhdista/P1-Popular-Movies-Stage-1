@@ -1,3 +1,7 @@
+/*
+ * Copyright (C) 2013 The Android Open Source Project
+ */
+
 package com.yhdista.nanodegree.p1.adapters;
 
 import android.content.Context;
@@ -27,9 +31,11 @@ import com.yhdista.nanodegree.p1.utils.U;
 import java.util.List;
 
 /**
- * Created by Yhdista on 18.8.2015.
+ * Custom adapter for GridView of Movies
  */
 public class MoviesGridViewAdapter extends BaseAdapter {
+
+    public static final String AUTHORITY_URL = "http://image.tmdb.org/t/p/w185";
 
     private final List<Movie> mDataset;
 
@@ -79,8 +85,8 @@ public class MoviesGridViewAdapter extends BaseAdapter {
 
 
         Picasso.with(U.getCTX())
-                .load("http://image.tmdb.org/t/p/w185/" + mDataset.get(position)
-                        .getPosterPath())
+                .load(new StringBuilder(AUTHORITY_URL +
+                        mDataset.get(position).getPosterPath()).toString())
                         // .placeholder(R.drawable.__leak_canary_notification)
                 .error(R.drawable.__leak_canary_toast_background)
                 .into(holder);
@@ -113,6 +119,7 @@ public class MoviesGridViewAdapter extends BaseAdapter {
         private final ProgressBar mProgressBar;
         private final View mHighLightView;
 
+        // Layout params for Portrait/Landscape & 2/3 column configuration of FrameLayout
         private static final AbsListView.LayoutParams PARAMS2_PORTRAIT;
         private static final AbsListView.LayoutParams PARAMS3_PORTRAIT;
         private static final AbsListView.LayoutParams PARAMS2_LANDSCAPE;
@@ -136,6 +143,8 @@ public class MoviesGridViewAdapter extends BaseAdapter {
                 height = display.getHeight();
             }
 
+
+
             PARAMS2_PORTRAIT = new AbsListView.LayoutParams(width / 2, (int) (1.5 * width / 2));
             PARAMS3_PORTRAIT = new AbsListView.LayoutParams(width / 3, (int) (1.5 * width / 3));
             PARAMS2_LANDSCAPE = new AbsListView.LayoutParams(height / 2, (int) (1.5 * height / 2));
@@ -152,9 +161,9 @@ public class MoviesGridViewAdapter extends BaseAdapter {
 
             setHighlightViewInvisible();
 
-            int orientation = U.getCTX().getResources().getConfiguration().orientation;
-
-            mPicassoView.setLayoutParams((orientation == Configuration.ORIENTATION_PORTRAIT) ? PARAMS2_PORTRAIT : PARAMS2_LANDSCAPE);
+            // set Layout params either for portrait or landscape
+            mPicassoView.setLayoutParams((U.getConfiguration() ==
+                    Configuration.ORIENTATION_PORTRAIT) ? PARAMS2_PORTRAIT : PARAMS2_LANDSCAPE);
 
 
         }

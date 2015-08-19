@@ -1,3 +1,7 @@
+/*
+ * Copyright (C) 2013 The Android Open Source Project
+ */
+
 package com.yhdista.nanodegree.p1.fragments;
 
 import android.content.Intent;
@@ -78,7 +82,7 @@ public class MainActivityFragment extends MyBasicFragment implements DataListCal
 
         // specify an adapter (see also next example)
         if (mAdapter == null) {
-            mAdapter = new MoviesGridViewAdapter(Collections.EMPTY_LIST);
+            mAdapter = new MoviesGridViewAdapter(Collections.<Movie>emptyList());
         }
 
         mGridView.setAdapter(mAdapter);

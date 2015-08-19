@@ -1,17 +1,20 @@
+/*
+ * Copyright (C) 2013 The Android Open Source Project
+ */
+
 package com.yhdista.nanodegree.p1.activities;
 
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.yhdista.nanodegree.p1.R;
 import com.yhdista.nanodegree.p1.abstracts.MyAppCompatActivity;
+import com.yhdista.nanodegree.p1.utils.UtilsActivity;
 
 /**
- * Created by Yhdista on 18.8.2015.
+ * Detail Activity for details about Movie
  */
 public class DetailActivity extends MyAppCompatActivity {
 
@@ -20,11 +23,8 @@ public class DetailActivity extends MyAppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        mToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(mToolbar);
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        UtilsActivity.setToolbarAsSupportActionBar(this, mToolbar, R.id.my_toolbar);
+        UtilsActivity.setSupportActionBarHomeButton(this);
 
     }
 

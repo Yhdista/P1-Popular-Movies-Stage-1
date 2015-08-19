@@ -1,3 +1,6 @@
+/*
+ * Copyright (C) 2013 The Android Open Source Project
+ */
 package com.yhdista.nanodegree.p1.abstracts;
 
 import android.app.Activity;
@@ -34,11 +37,13 @@ public abstract class MyBasicFragment extends Fragment {
         }
     }
 
+
     /**
      * Convention Fragment constructor.
      *
      * @return new instance MyBasicFragment
      */
+
 
 
     @Override

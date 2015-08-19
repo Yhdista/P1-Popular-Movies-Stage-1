@@ -11,7 +11,8 @@
         android:background="#029789"
         android:gravity="center_vertical"
         android:paddingLeft="16dp"
-        android:text="Large Text"
+        android:paddingRight="16dp"
+        android:text="@string/default_text"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#ffffffff"
         android:textSize="36sp" />
@@ -41,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:padding="2dp"
-                android:text="Large Text"
+                android:text="@string/default_text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
@@ -50,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:padding="2dp"
-                android:text="Medium Text"
+                android:text="@string/default_text"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
     </LinearLayout>
@@ -60,6 +61,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="Medium Text"
+        android:text="@string/default_text"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 </LinearLayout>

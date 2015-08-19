@@ -1,3 +1,7 @@
+/*
+ * Copyright (C) 2013 The Android Open Source Project
+ */
+
 package com.yhdista.nanodegree.p1.oodesign;
 
 import android.os.Parcel;
@@ -22,21 +26,21 @@ public class Movie implements Parcelable{
     public static final String TAG_VOTE_AVERAGE = "vote_average";
 
     boolean mAdult;             // adult	:	false
-    String mBackdropPath;       // backdrop_path	:	/kvXLZqY0Ngl1XSw7EaMQO0C1CCj.jpg
+    private String mBackdropPath;       // backdrop_path	:	/kvXLZqY0Ngl1XSw7EaMQO0C1CCj.jpg
     // genre_ids		[3]
     // 0	:	28
     // 1	:	12
     // 2	:	878
-    long mId;                   // id	:	102899
-    String mOriginalLanguage;   // original_language	:	en
-    String mOriginalTitle;      // original_title	:	Ant-Man
-    String mOverview;           // overview	:	Armed with the astonishing ability to shrink in scale but increase in strength, con-man Scott Lang must embrace his inner-hero and help his mentor, Dr. Hank Pym, protect the secret behind his spectacular Ant-Man suit from a new generation of towering threats. Against seemingly insurmountable obstacles, Pym and Lang must plan and pull off a heist that will save the world.
-    Date mReleaseDate;          // release_date	:	2015-07-17
-    String mPosterPath;         // poster_path	:	/7SGGUiTE6oc2fh9MjIk5M00dsQd.jpg
+    private long mId;                   // id	:	102899
+    private String mOriginalLanguage;   // original_language	:	en
+    private String mOriginalTitle;      // original_title	:	Ant-Man
+    private String mOverview;           // overview	:	Armed with the astonishing ability to shrink in scale but increase in strength, con-man Scott Lang must embrace his inner-hero and help his mentor, Dr. Hank Pym, protect the secret behind his spectacular Ant-Man suit from a new generation of towering threats. Against seemingly insurmountable obstacles, Pym and Lang must plan and pull off a heist that will save the world.
+    private Date mReleaseDate;          // release_date	:	2015-07-17
+    private String mPosterPath;         // poster_path	:	/7SGGUiTE6oc2fh9MjIk5M00dsQd.jpg
     double mPopularity;         // popularity	:	52.680889
-    String mTitle;              // title	:	Ant-Man
+    private String mTitle;              // title	:	Ant-Man
     boolean mVideo;             // video	:	false
-    double mVoteAverage;        // vote_average	:	7.1
+    private double mVoteAverage;        // vote_average	:	7.1
     int mVoteCount;         // vote_count	:	826
 
     private Movie() {
@@ -56,7 +60,7 @@ public class Movie implements Parcelable{
 
     }
 
-    protected Movie(Parcel in) {
+    private Movie(Parcel in) {
         mBackdropPath = in.readString();
         mId = in.readLong();
         mOriginalLanguage = in.readString();
@@ -116,7 +120,7 @@ public class Movie implements Parcelable{
         return mVoteAverage;
     }
 
-    public long getReleaseDateInMillis() {
+    private long getReleaseDateInMillis() {
         return UtilsDate.getTimeInMillis(mReleaseDate);
     }
 

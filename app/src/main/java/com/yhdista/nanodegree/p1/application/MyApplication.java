@@ -1,3 +1,7 @@
+/*
+ * Copyright (C) 2013 The Android Open Source Project
+ */
+
 package com.yhdista.nanodegree.p1.application;
 
 import android.app.Application;
@@ -21,7 +25,7 @@ import com.yhdista.nanodegree.p1.utils.L;
  */
 public class MyApplication extends Application {
 
-    public static final String TAG = MyApplication.class.getSimpleName();
+    private static final String TAG = MyApplication.class.getSimpleName();
 
 
     // Volley Request Queue
@@ -129,7 +133,7 @@ public class MyApplication extends Application {
     }
 
 
-    public RequestQueue getRequestQueue() {
+    private RequestQueue getRequestQueue() {
         if (mRequestQueue == null) {
             mRequestQueue = Volley.newRequestQueue(getApplicationContext());
         }

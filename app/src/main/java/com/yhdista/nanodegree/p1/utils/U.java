@@ -1,3 +1,7 @@
+/*
+ * Copyright (C) 2013 The Android Open Source Project
+ */
+
 package com.yhdista.nanodegree.p1.utils;
 
 import android.content.Context;
@@ -27,8 +31,8 @@ public class U {
         if (connectivity != null) {
             NetworkInfo[] info = connectivity.getAllNetworkInfo();
             if (info != null) {
-                for (int i = 0; i < info.length; i++) {
-                    if (info[i].getState() == NetworkInfo.State.CONNECTED) {
+                for (NetworkInfo anInfo : info) {
+                    if (anInfo.getState() == NetworkInfo.State.CONNECTED) {
                         return true;
                     }
                 }
@@ -48,6 +52,7 @@ public class U {
         }
     }
 */
+
     /**
      * Special case for toggling ProgressBar in onPreExecute method when
      * ProgressBar is already visible from the previous task
@@ -64,17 +69,22 @@ public class U {
      }          */
 
 
-    // dalagete of MyApplication instance (Application Cntext)
+    /**
+     * Returns ApplicationContext
+     *
+     * @return Context
+     */
     public static Context getCTX() {
         return MyApplication.getContext();
     }
 
-    /*
-    // to prevent Memory Leak, delegate of getter MainActivity instance J-I-T
-    public static AppCompatActivity getActivity() {
-        return MainActivity.getActivity();
+    /**
+     * Returns configuration
+     * @return 1 = Portrait, 2 = Landscape
+     */
+    public static int getConfiguration() {
+        return U.getCTX().getResources().getConfiguration().orientation;
     }
-    */
 
 
 }

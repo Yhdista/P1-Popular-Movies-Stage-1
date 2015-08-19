@@ -1,3 +1,6 @@
+/*
+ * Copyright (C) 2013 The Android Open Source Project
+ */
 package com.yhdista.nanodegree.p1.fragments;
 
 import android.graphics.Bitmap;
@@ -32,8 +35,6 @@ public class DetailFragment extends MyBasicFragment {
     private TextView mDateView;
     private FrameLayout mPicassoView;
 
-    private Movie mMovie;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,18 +49,19 @@ public class DetailFragment extends MyBasicFragment {
         mPicassoView = (FrameLayout) mRootView.findViewById(R.id.picasso_view);
 
 
-        mMovie = mActivity.getIntent().getExtras().getParcelable(C.TAG_BUNDLE_MOVIE);
+        Movie movie = mActivity.getIntent().getExtras().getParcelable(C.TAG_BUNDLE_MOVIE);
 
-        mTitleView.setText(mMovie.getTitle());
-        mDateView.setText("" + mMovie.getReleaseYear());
-        mRatingView.setText("" + mMovie.getUserRating() + "/10");
-        mSynopsisView.setText(mMovie.getOverview());
+        if (movie != null) {
+            mDateView.setText("" + movie.getReleaseYear());
+            mRatingView.setText("" + movie.getUserRating() + "/10");
+            mSynopsisView.setText(movie.getOverview());
+            Picasso.with(U.getCTX())
+                    .load("http://image.tmdb.org/t/p/w185/" + movie.getPosterPath())
+                            // .placeholder(R.drawable.__leak_canary_notification)
+                    .error(R.drawable.__leak_canary_toast_background)
+                    .into(new ImageHolder(mPicassoView));
 
-        Picasso.with(U.getCTX())
-                .load("http://image.tmdb.org/t/p/w185/" + mMovie.getPosterPath())
-                        // .placeholder(R.drawable.__leak_canary_notification)
-                .error(R.drawable.__leak_canary_toast_background)
-                .into(new ImageHolder(mPicassoView));
+        }
 
 
         return mRootView;

@@ -1,9 +1,14 @@
+/*
+ * Copyright (C) 2013 The Android Open Source Project
+ */
+
 package com.yhdista.nanodegree.p1.abstracts;
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -37,21 +42,22 @@ public abstract class MyBasicDialogFragment extends DialogFragment {
         }
     }
 
-
+    // Protected method for setting message String for Dialog into fragment args.
     protected static void setMessage(Bundle bundleArgs, String message) {
         if (bundleArgs != null) {
             bundleArgs.putString(TAG_DIALOG_MESSAGE, message);
         }
     }
 
+    // Protected method for setting cancellation of Dialog into fragment args.
     protected static void setMyCancelable(Bundle bundleArgs, boolean isCancellable) {
         if (bundleArgs != null) {
             bundleArgs.putBoolean(TAG_IS_CANCELLABLE, isCancellable);
         }
     }
 
-    /**
-     * Convention Fragment constructor.
+    /*
+     * Fragment factory method in concrete object!
      *
      * @return new instance MyBasicFragment
      */
@@ -78,11 +84,12 @@ public abstract class MyBasicDialogFragment extends DialogFragment {
     }
 
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         ProgressDialog dialog = new ProgressDialog(getActivity(), getTheme());
         //dialog.setTitle("basldasjdhjashd");
-        dialog.setMessage(getArguments().getString(TAG_DIALOG_MESSAGE, "Loading data..."));
+        dialog.setMessage(getArguments().getString(TAG_DIALOG_MESSAGE));
         dialog.setIndeterminate(true);
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         return dialog;

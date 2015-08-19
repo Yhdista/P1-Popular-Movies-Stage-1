@@ -1,3 +1,7 @@
+/*
+ * Copyright (C) 2013 The Android Open Source Project
+ */
+
 package com.yhdista.nanodegree.p1.utils;
 
 import java.text.ParseException;
@@ -12,9 +16,6 @@ import java.util.Locale;
 public class UtilsDate {
 
 
-
-
-
     /**
      * Basic method to change Date format from one String format to another String format
      *
@@ -27,8 +28,8 @@ public class UtilsDate {
     public static String parseDate(String inputDate, String inputPattern, String outputPattern) throws ParseException {
         String outputDate = null;
         if (!inputDate.isEmpty()) {
-            SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern);
-            SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);
+            SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern, Locale.getDefault());
+            SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern, Locale.getDefault());
             outputDate = outputFormat.format(inputFormat.parse(inputDate));
         }
         return outputDate;
@@ -39,8 +40,8 @@ public class UtilsDate {
         if (!inputDate.isEmpty()) {
             String inputPattern = "yyyy-MM-dd HH:mm:ss";
             String outputPattern = "dd.MM.yyyy HH:mm:ss";
-            SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern);
-            SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);
+            SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern, Locale.getDefault());
+            SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern, Locale.getDefault());
             outputDate = outputFormat.format(inputFormat.parse(inputDate));
         }
         return outputDate;
@@ -49,12 +50,11 @@ public class UtilsDate {
     public static Date parseDate_YYYY_MM_DD(String stringDate) throws ParseException {
         Date date = null;
         if (!stringDate.isEmpty()) {
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
             date = format.parse(stringDate);
         }
         return date;
     }
-
 
 
     /**
@@ -74,9 +74,8 @@ public class UtilsDate {
      * @return tome as a Date
      */
     public static Date getDateFromMillis(long millis) {
-        SimpleDateFormat formatter = new SimpleDateFormat();
-        // Create a calendar object that will convert the date and time value in milliseconds to date.
         Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(millis);
         return calendar.getTime();
     }
 
