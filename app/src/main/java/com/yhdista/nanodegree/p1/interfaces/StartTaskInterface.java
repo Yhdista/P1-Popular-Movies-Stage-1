@@ -5,7 +5,7 @@
 package com.yhdista.nanodegree.p1.interfaces;
 
 /**
- * Created by vlachjan on 14.8.2015.
+ * Interface for starting task
  */
 public interface StartTaskInterface<E> {
 

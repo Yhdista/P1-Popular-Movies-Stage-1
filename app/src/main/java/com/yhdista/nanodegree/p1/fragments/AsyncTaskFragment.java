@@ -11,14 +11,16 @@ import android.os.Bundle;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.yhdista.nanodegree.p1.R;
 import com.yhdista.nanodegree.p1.abstracts.MyBasicDialogFragment;
 import com.yhdista.nanodegree.p1.application.MyApplication;
 import com.yhdista.nanodegree.p1.constants.C;
+import com.yhdista.nanodegree.p1.interfaces.AsyncTaskCallbacks;
+import com.yhdista.nanodegree.p1.interfaces.DatasetCallbacks;
 import com.yhdista.nanodegree.p1.interfaces.StartTaskInterface;
 import com.yhdista.nanodegree.p1.oodesign.Movie;
-import com.yhdista.nanodegree.p1.interfaces.AsyncTaskCallbacks;
-import com.yhdista.nanodegree.p1.interfaces.DataListCallbacks;
 import com.yhdista.nanodegree.p1.utils.L;
+import com.yhdista.nanodegree.p1.utils.U;
 import com.yhdista.nanodegree.p1.utils.UtilsDate;
 
 import org.json.JSONArray;
@@ -32,7 +34,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Non-UI task fragment
+ * Non-UI task fragment for Volley and AsyncTask processes
  */
 public class AsyncTaskFragment extends MyBasicDialogFragment implements AsyncTaskCallbacks<Movie>, StartTaskInterface<JSONObject> {
 
@@ -43,13 +45,13 @@ public class AsyncTaskFragment extends MyBasicDialogFragment implements AsyncTas
     private WeakReference<MyAsyncTask> mTask;
 
 
-    private DataListCallbacks<Movie> mCallback;
+    private DatasetCallbacks<Movie> mCallback;
 
     public static AsyncTaskFragment newRetainedInstance() {
 
         Bundle bundleArgs = new Bundle();
         setRetain(bundleArgs, true);
-        setMyCancelable(bundleArgs, false);
+        setMyCancelable(bundleArgs, true);
         setMessage(bundleArgs, "Loading data...");
 
         AsyncTaskFragment fragment = new AsyncTaskFragment();
@@ -66,7 +68,7 @@ public class AsyncTaskFragment extends MyBasicDialogFragment implements AsyncTas
 
         // TODO is there any way to solve this warning withou supressing it?
         //noinspection unchecked
-        mCallback = (DataListCallbacks<Movie>) mFragmentManager.findFragmentByTag(C.TAG_FRAGMENT_MAIN_ACTIVITY);
+        mCallback = (DatasetCallbacks<Movie>) mFragmentManager.findFragmentByTag(C.TAG_FRAGMENT_MAIN_ACTIVITY);
 
     }
 
@@ -125,28 +127,19 @@ public class AsyncTaskFragment extends MyBasicDialogFragment implements AsyncTas
 
         @Override
         public void onErrorResponse(VolleyError error) {
-
-            L.t(error.getMessage());
-
+            L.t(U.getCTX().getString(R.string.error_unknown_host_exception));
+            L.tdebug(error.getMessage());
         }
     }
 
 
     @Override
     public void onPreExecute() {
-        // start ProgressFragment at time of downloading xml file and parsing
-        /*mProgressDialogFragment = ProgressDialogFragment.newInstance(RETAINED);
-        mProgressDialogFragment.setCancelable(true);
-        mProgressDialogFragment.show(mFragmentManager, C.TAG_FRAGMENT_PROGRESS_DIALOG);*/
     }
 
 
     @Override
     public void onPostExecute(List<Movie> movies) {
-     /*   if (mProgressDialogFragment != null) {
-            mProgressDialogFragment.dismissAllowingStateLoss();
-        }*/
-
         mCallback.setData(movies);
     }
 
@@ -156,13 +149,13 @@ public class AsyncTaskFragment extends MyBasicDialogFragment implements AsyncTas
 
         switch (flag) {
             case UNKNOWN_HOST_EXCEPTION:
-                L.t("Není internet");
+                L.t(mActivity.getString(R.string.error_unknown_host_exception));
                 break;
             case XML_PARSE_EXCEPTION:
-                L.t("Nastala chyba (internetové spojení nefunguje správně)");
+                L.t(mActivity.getString(R.string.error_xml_parse_exception));
                 break;
             case GENERIC_EXCEPTION:
-                L.t("Nastala chyba: kontaktujte autora:-)");
+                L.t(mActivity.getString(R.string.error_generic_exception));
                 break;
         }
 
@@ -171,7 +164,6 @@ public class AsyncTaskFragment extends MyBasicDialogFragment implements AsyncTas
 
     @Override
     public void onCancelled() {
-
     }
 
     /**
@@ -179,13 +171,10 @@ public class AsyncTaskFragment extends MyBasicDialogFragment implements AsyncTas
      */
     private static class MyAsyncTask extends AsyncTask<JSONObject, C.ErrorTag, List<Movie>> {
 
-
         // sleeping millis for debuging purposes
         private static final long MILLIS_FOR_SLEEP = 0;
 
-
         final WeakReference<AsyncTaskCallbacks<Movie>> mCallback;
-
 
         MyAsyncTask(AsyncTaskCallbacks<Movie> callback) {
             mCallback = new WeakReference<>(callback);
@@ -204,7 +193,8 @@ public class AsyncTaskFragment extends MyBasicDialogFragment implements AsyncTas
         protected List<Movie> doInBackground(JSONObject... params) {
 
             try {
-                Thread.sleep(500);
+                // just a trick to be sure to see progressbar for a moment
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -218,8 +208,8 @@ public class AsyncTaskFragment extends MyBasicDialogFragment implements AsyncTas
                 jsonArray = jsonObject.getJSONArray("results");
                 final int arrayLength = jsonArray.length();
                 for (int i = 0; i < arrayLength; i++) {
-                    JSONObject item = (JSONObject) jsonArray.get(i);
 
+                    JSONObject item = (JSONObject) jsonArray.get(i);
 
                     movie = new Movie.Builder(item.getString(Movie.TAG_TITLE),
                             item.getString(Movie.TAG_POSTER_PATH))
@@ -233,56 +223,14 @@ public class AsyncTaskFragment extends MyBasicDialogFragment implements AsyncTas
 
                 return movies;
 
-            } catch (JSONException e) {
-                e.printStackTrace();
-            } catch (ParseException e) {
-                e.printStackTrace();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-
-
-
-
-/*
-            try {
-
-  //              while (jsonObject.) {
-//                }
-
-                // Thread.sleep(MILLIS_FOR_SLEEP);
-
-
-                movie = new Movie.Builder(title, thumbnail)
-                        .setOverview("")
-                        .setUserRating(0.0f)
-                        .setReleaseDate(null)
-                        .build();
-                movies.add(movie);
-
-                if (isCancelled()) {
-  //                  break;
-                }
-
-
-                return movies;
-
-            } catch (UnknownHostException e) {
-                publishProgress(C.ErrorTag.UNKNOWN_HOST_EXCEPTION);
-                e.printStackTrace();
-            } catch (SAXParseException e) {
+            } catch (ParseException | JSONException e) {
                 publishProgress(C.ErrorTag.XML_PARSE_EXCEPTION);
-            } catch (Exception e) {
                 e.printStackTrace();
-                publishProgress(C.ErrorTag.GENERIC_EXCEPTION);
             }
-*/
+
             return Collections.emptyList();
 
-
         }
-
 
         @Override
         protected void onProgressUpdate(C.ErrorTag... values) {
@@ -306,6 +254,5 @@ public class AsyncTaskFragment extends MyBasicDialogFragment implements AsyncTas
             }
         }
     }
-
 
 }

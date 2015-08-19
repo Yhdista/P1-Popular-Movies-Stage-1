@@ -25,6 +25,7 @@ import android.widget.ProgressBar;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 import com.yhdista.nanodegree.p1.R;
+import com.yhdista.nanodegree.p1.constants.C;
 import com.yhdista.nanodegree.p1.oodesign.Movie;
 import com.yhdista.nanodegree.p1.utils.U;
 
@@ -35,19 +36,23 @@ import java.util.List;
  */
 public class MoviesGridViewAdapter extends BaseAdapter {
 
-    public static final String AUTHORITY_URL = "http://image.tmdb.org/t/p/w185";
-
-    private final List<Movie> mDataset;
+    private List<Movie> mDataset;
 
     // position of selected item (after OnItemClicked) which is highlighted
     // default value is -1 which is non-existing position
     private int mItemSelected = -1;
 
-
-    public MoviesGridViewAdapter(List<Movie> myDataset) {
-        mDataset = myDataset;
+    public MoviesGridViewAdapter(List<Movie> dataset) {
+        mDataset = dataset;
     }
 
+    /**
+     * For change dataset of the Adapter
+     * @param dataset
+     */
+    public void setDataset(List<Movie> dataset) {
+        mDataset = dataset;
+    }
 
     @Override
     public int getCount() {
@@ -79,16 +84,13 @@ public class MoviesGridViewAdapter extends BaseAdapter {
             holder = (ViewHolder) cell.getTag();
         }
 
-
         //ImageView iv = (ImageView) v.findViewById(R.id.image_view);
         //ProgressBar pb = (ProgressBar) v.findViewById(R.id.progress_bar);
 
-
         Picasso.with(U.getCTX())
-                .load(new StringBuilder(AUTHORITY_URL +
-                        mDataset.get(position).getPosterPath()).toString())
-                        // .placeholder(R.drawable.__leak_canary_notification)
-                .error(R.drawable.__leak_canary_toast_background)
+                .load(new StringBuilder(C.MOVIEDB_AUTHORITY_URL + C.MOVIEDB_W185
+                        + mDataset.get(position).getPosterPath()).toString())
+                .error(R.drawable.error_round)
                 .into(holder);
 
 
@@ -106,12 +108,10 @@ public class MoviesGridViewAdapter extends BaseAdapter {
         mItemSelected = position;
     }
 
-
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
     public static class ViewHolder implements Target {
-
 
         // each data item is just a string in this case
         private final ImageView mImageView;
@@ -144,13 +144,11 @@ public class MoviesGridViewAdapter extends BaseAdapter {
             }
 
 
-
             PARAMS2_PORTRAIT = new AbsListView.LayoutParams(width / 2, (int) (1.5 * width / 2));
             PARAMS3_PORTRAIT = new AbsListView.LayoutParams(width / 3, (int) (1.5 * width / 3));
             PARAMS2_LANDSCAPE = new AbsListView.LayoutParams(height / 2, (int) (1.5 * height / 2));
             PARAMS3_LANDSCAPE = new AbsListView.LayoutParams(height / 3, (int) (1.5 * height / 3));
         }
-
 
         public ViewHolder(View v) {
 
@@ -165,9 +163,7 @@ public class MoviesGridViewAdapter extends BaseAdapter {
             mPicassoView.setLayoutParams((U.getConfiguration() ==
                     Configuration.ORIENTATION_PORTRAIT) ? PARAMS2_PORTRAIT : PARAMS2_LANDSCAPE);
 
-
         }
-
 
         @Override
         public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
@@ -187,22 +183,18 @@ public class MoviesGridViewAdapter extends BaseAdapter {
             setViewVisible(mProgressBar);
         }
 
-
         private void setViewVisible(View view) {
             view.setVisibility(View.VISIBLE);
         }
-
 
         private void setViewInvisible(View view) {
             view.setVisibility(View.INVISIBLE);
         }
 
-
         public void setHighlightViewVisible() {
             setViewVisible(mHighLightView.findViewById(R.id.hv1));
             setViewVisible(mHighLightView.findViewById(R.id.hv2));
         }
-
 
         public void setHighlightViewInvisible() {
             setViewInvisible(mHighLightView.findViewById(R.id.hv1));

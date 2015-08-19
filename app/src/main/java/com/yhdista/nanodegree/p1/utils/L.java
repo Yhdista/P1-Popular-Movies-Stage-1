@@ -38,6 +38,17 @@ public class L {
     }
 
     /**
+     * Create Debug Toast message
+     *
+     * @param message
+     */
+    public static void tdebug(String message)
+    {
+        if (C.DEBUG) Toast.makeText(U.getCTX(), message, Toast.LENGTH_LONG).show();
+    }
+
+
+    /**
      * Create Toast message
      *
      * @param message

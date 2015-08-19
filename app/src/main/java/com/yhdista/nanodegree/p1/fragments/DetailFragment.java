@@ -24,10 +24,9 @@ import com.yhdista.nanodegree.p1.oodesign.Movie;
 import com.yhdista.nanodegree.p1.utils.U;
 
 /**
- * Created by Yhdista on 18.8.2015.
+ * Detail Fragment
  */
 public class DetailFragment extends MyBasicFragment {
-
 
     private TextView mTitleView;
     private TextView mSynopsisView;
@@ -52,22 +51,21 @@ public class DetailFragment extends MyBasicFragment {
         Movie movie = mActivity.getIntent().getExtras().getParcelable(C.TAG_BUNDLE_MOVIE);
 
         if (movie != null) {
+            mTitleView.setText(movie.getTitle());
             mDateView.setText("" + movie.getReleaseYear());
             mRatingView.setText("" + movie.getUserRating() + "/10");
             mSynopsisView.setText(movie.getOverview());
             Picasso.with(U.getCTX())
-                    .load("http://image.tmdb.org/t/p/w185/" + movie.getPosterPath())
-                            // .placeholder(R.drawable.__leak_canary_notification)
-                    .error(R.drawable.__leak_canary_toast_background)
+                    .load(new StringBuilder(C.MOVIEDB_AUTHORITY_URL + C.MOVIEDB_W185
+                            + movie.getPosterPath()).toString())
+                    .error(R.drawable.error_round)
                     .into(new ImageHolder(mPicassoView));
 
         }
 
-
         return mRootView;
 
     }
-
 
     @Override
     public void onDestroyView() {
@@ -81,7 +79,8 @@ public class DetailFragment extends MyBasicFragment {
 
     }
 
-    public static class ImageHolder implements Target {
+    // Holder object as a container for Picasso Target object
+    private static class ImageHolder implements Target {
 
         private final FrameLayout mPicassoView;
         private final ImageView mImageView;
@@ -117,12 +116,12 @@ public class DetailFragment extends MyBasicFragment {
             view.setVisibility(View.VISIBLE);
         }
 
-
         private void setViewInvisible(View view) {
             view.setVisibility(View.INVISIBLE);
         }
 
     }
+
 
 
 }

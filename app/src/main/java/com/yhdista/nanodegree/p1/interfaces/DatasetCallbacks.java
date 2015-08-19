@@ -3,10 +3,12 @@ package com.yhdista.nanodegree.p1.interfaces;
 import java.util.List;
 
 /**
- * ControlFragment callbacks
+ * MainFragment callbacks
  */
-public interface DataListCallbacks<E> {
+public interface DatasetCallbacks<E> {
 
     void setData(List<E> elements);
+
+    void sortBy(int which);
 
 }

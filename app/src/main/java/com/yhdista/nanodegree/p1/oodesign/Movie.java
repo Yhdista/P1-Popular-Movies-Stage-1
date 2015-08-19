@@ -13,8 +13,9 @@ import java.util.Date;
 
 /**
  * Design of Movie element
+ * Object is Parcelable because of Intent transaction
  */
-public class Movie implements Parcelable{
+public class Movie implements Parcelable {
 
     public static final String RELEASE_DATE_FORMAT = "yyyy-mm-dd";
 
@@ -25,6 +26,7 @@ public class Movie implements Parcelable{
     public static final String TAG_POSTER_PATH = "poster_path";
     public static final String TAG_VOTE_AVERAGE = "vote_average";
 
+    // TODO preparation for next project
     boolean mAdult;             // adult	:	false
     private String mBackdropPath;       // backdrop_path	:	/kvXLZqY0Ngl1XSw7EaMQO0C1CCj.jpg
     // genre_ids		[3]
@@ -43,6 +45,7 @@ public class Movie implements Parcelable{
     private double mVoteAverage;        // vote_average	:	7.1
     int mVoteCount;         // vote_count	:	826
 
+    // Constructor is hidden
     private Movie() {
     }
 
@@ -125,7 +128,6 @@ public class Movie implements Parcelable{
     }
 
     public int getReleaseYear() {
-        // TODO udelat ve spravnem formatu
         return UtilsDate.getTimeAsYear(mReleaseDate);
     }
 
@@ -175,12 +177,10 @@ public class Movie implements Parcelable{
             return this;
         }
 
-
         public Movie build() {
             return new Movie(this);
         }
 
     }
-
 
 }

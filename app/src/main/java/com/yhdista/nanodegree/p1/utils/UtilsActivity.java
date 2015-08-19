@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 /**
- * Created by Yhdista on 19.8.2015.
+ * Activity Utility
  */
 public class UtilsActivity {
 

@@ -12,35 +12,12 @@ import com.yhdista.nanodegree.p1.application.MyApplication;
 
 
 /**
- * Utils class
+ * Utils class (Context etc.)
  */
 public class U {
 
 
-    /**
-     * This is MAIN METHOD for DETECTING INTERNET!!!!
-     * check all internet sources
-     *
-     * @param context is usually Activity
-     * @return true if at least on of internet sources is passed, false if none of internet sources passed
-     */
-    public static boolean isConnectingToInternet(Context context) {
 
-        ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        if (connectivity != null) {
-            NetworkInfo[] info = connectivity.getAllNetworkInfo();
-            if (info != null) {
-                for (NetworkInfo anInfo : info) {
-                    if (anInfo.getState() == NetworkInfo.State.CONNECTED) {
-                        return true;
-                    }
-                }
-
-            }
-        }
-        return false;
-    }
 
 /*
     public static void toggleToolbarProgressBar(int visible) {

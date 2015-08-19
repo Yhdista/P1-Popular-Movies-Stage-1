@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
- * Created by VlachJan on 13.8.2015.
+ * Date Utility
  */
 public class UtilsDate {
 

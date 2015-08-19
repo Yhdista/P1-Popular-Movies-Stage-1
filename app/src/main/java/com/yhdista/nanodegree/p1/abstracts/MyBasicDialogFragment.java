@@ -24,9 +24,10 @@ public abstract class MyBasicDialogFragment extends DialogFragment {
 
     public static final boolean RETAINED = true;
 
-    private static final String TAG_IS_RETAINED = "isRetained";
-    private static final String TAG_IS_CANCELLABLE = "isRetained";
-    private static final String TAG_DIALOG_MESSAGE = "dialogMessage";
+    protected static final String TAG_IS_RETAINED = "isRetained";
+    protected static final String TAG_IS_CANCELLABLE = "isRetained";
+    protected static final String TAG_DIALOG_TITLE = "dialogTitle";
+    protected static final String TAG_DIALOG_MESSAGE = "dialogMessage";
 
     protected FragmentManager mFragmentManager;
     protected AppCompatActivity mActivity;
@@ -41,6 +42,14 @@ public abstract class MyBasicDialogFragment extends DialogFragment {
             bundleArgs.putBoolean(TAG_IS_RETAINED, isRetained);
         }
     }
+
+    // Protected method for setting title String for Dialog into fragment args.
+    protected static void setTitle(Bundle bundleArgs, String message) {
+        if (bundleArgs != null) {
+            bundleArgs.putString(TAG_DIALOG_TITLE, message);
+        }
+    }
+
 
     // Protected method for setting message String for Dialog into fragment args.
     protected static void setMessage(Bundle bundleArgs, String message) {
@@ -88,7 +97,7 @@ public abstract class MyBasicDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         ProgressDialog dialog = new ProgressDialog(getActivity(), getTheme());
-        //dialog.setTitle("basldasjdhjashd");
+        dialog.setTitle(getArguments().getString(TAG_DIALOG_TITLE));
         dialog.setMessage(getArguments().getString(TAG_DIALOG_MESSAGE));
         dialog.setIndeterminate(true);
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);

@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
+import com.yhdista.nanodegree.p1.application.MyApplication;
+
 
 /**
  * Custom template for general compat Activity
@@ -44,6 +46,17 @@ public abstract class MyAppCompatActivity extends AppCompatActivity {
                 .penaltyLog()
                 .build());
     }
+
+
+    @Override
+    public void onBackPressed() {
+
+        // cancel Volley request, otherwise memory leaks
+        MyApplication.getInstance().cancelVolleyRequest();
+
+        super.onBackPressed();
+    }
+
 
 
     @Override
