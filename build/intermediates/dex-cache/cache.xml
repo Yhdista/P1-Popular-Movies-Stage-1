@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\_ANDROID_SDK\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="D:\Dropbox\_HLAVNI\YHDISTADEV\NANODEGREE_P1\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-aa4a641cc3a7132bf83573e322c1d1f0337d4014.jar" />
+    </item>
+    <item
+        jar="D:\Dropbox\_HLAVNI\YHDISTADEV\NANODEGREE_P1\app\build\intermediates\exploded-aar\com.squareup.leakcanary\leakcanary-android\1.3.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="9066b6d4e2536b49e3b58aa301fd925247032df0">
+        <dex dex="D:\Dropbox\_HLAVNI\YHDISTADEV\NANODEGREE_P1\app\build\intermediates\pre-dexed\debug\classes-0082374551699a96a7218c4dda219cf4eebaebc1.jar" />
+    </item>
+    <item
+        jar="D:\Dropbox\_HLAVNI\YHDISTADEV\NANODEGREE_P1\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="D:\Dropbox\_HLAVNI\YHDISTADEV\NANODEGREE_P1\app\build\intermediates\pre-dexed\debug\classes-91fb8e24bbf2c9c57ede1936e83d4b356f4252db.jar" />
+    </item>
+    <item
+        jar="D:\Dropbox\_HLAVNI\YHDISTADEV\NANODEGREE_P1\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="D:\Dropbox\_HLAVNI\YHDISTADEV\NANODEGREE_P1\app\build\intermediates\pre-dexed\debug\classes-2c0d7f9b7bb43b2cde8445412e50a14fba804a12.jar" />
+    </item>
+    <item
+        jar="D:\Dropbox\_HLAVNI\YHDISTADEV\NANODEGREE_P1\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="5b37cf49773f7f17aca9830efd3053b0cac56728">
+        <dex dex="D:\Dropbox\_HLAVNI\YHDISTADEV\NANODEGREE_P1\app\build\intermediates\pre-dexed\debug\classes-a42eb00778d46962751ca1d97bffc3f938d8bf98.jar" />
+    </item>
+    <item
+        jar="D:\Dropbox\_HLAVNI\YHDISTADEV\NANODEGREE_P1\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="97f7e239e86ef994de894818fdd8a71d2e89d6aa">
+        <dex dex="D:\Dropbox\_HLAVNI\YHDISTADEV\NANODEGREE_P1\app\build\intermediates\pre-dexed\debug\classes-c374428818bb204858856ea94170e0504b43a37c.jar" />
+    </item>
+    <item
+        jar="D:\Dropbox\_HLAVNI\YHDISTADEV\NANODEGREE_P1\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="D:\Dropbox\_HLAVNI\YHDISTADEV\NANODEGREE_P1\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-373ac071e207cce7bdb5d5c8333595fcdb912a90.jar" />
+    </item>
+    <item
+        jar="C:\Users\Yhdista\.gradle\caches\modules-2\files-2.1\com.squareup.leakcanary\leakcanary-watcher\1.3.1\6904771474c058abfc5912c13d12b02754712165\leakcanary-watcher-1.3.1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="6904771474c058abfc5912c13d12b02754712165">
+        <dex dex="D:\Dropbox\_HLAVNI\YHDISTADEV\NANODEGREE_P1\app\build\intermediates\pre-dexed\debug\leakcanary-watcher-1.3.1-88ff570afd04b6914f55c74048ea46929e7fa64e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Yhdista\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="D:\Dropbox\_HLAVNI\YHDISTADEV\NANODEGREE_P1\app\build\intermediates\pre-dexed\debug\picasso-2.5.2-8384e17b9f5f260c080bb4b702b6f54dbf542efa.jar" />
+    </item>
+    <item
+        jar="C:\Users\Yhdista\.gradle\caches\modules-2\files-2.1\com.mcxiaoke.volley\library\1.0.18\38da306aafee11459cd935a01d2c92a98dc670a4\library-1.0.18.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="38da306aafee11459cd935a01d2c92a98dc670a4">
+        <dex dex="D:\Dropbox\_HLAVNI\YHDISTADEV\NANODEGREE_P1\app\build\intermediates\pre-dexed\debug\library-1.0.18-12729c48bd40c58ad130d65a0d86d9e7cb94e369.jar" />
+    </item>
+    <item
+        jar="C:\Users\Yhdista\.gradle\caches\modules-2\files-2.1\com.squareup.leakcanary\leakcanary-analyzer\1.3.1\325e7401a7ea16918eb39ba8baad8fd5561a55d3\leakcanary-analyzer-1.3.1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="325e7401a7ea16918eb39ba8baad8fd5561a55d3">
+        <dex dex="D:\Dropbox\_HLAVNI\YHDISTADEV\NANODEGREE_P1\app\build\intermediates\pre-dexed\debug\leakcanary-analyzer-1.3.1-0577ced5bde6aa0602704cf0d902e720f0213388.jar" />
+    </item>
+    <item
+        jar="C:\Users\Yhdista\.gradle\caches\modules-2\files-2.1\com.squareup.haha\haha\1.3\d2c832f9d14a11c79f58a7ee2e10526a12152c72\haha-1.3.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="d2c832f9d14a11c79f58a7ee2e10526a12152c72">
+        <dex dex="D:\Dropbox\_HLAVNI\YHDISTADEV\NANODEGREE_P1\app\build\intermediates\pre-dexed\debug\haha-1.3-1a7bd4d2d97f590aaff126f6e3679a7d2d0c9468.jar" />
+    </item>
+
+</items>
