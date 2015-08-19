@@ -5,8 +5,6 @@
 package com.yhdista.nanodegree.p1.utils;
 
 import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 
 import com.yhdista.nanodegree.p1.application.MyApplication;
 
@@ -15,8 +13,6 @@ import com.yhdista.nanodegree.p1.application.MyApplication;
  * Utils class (Context etc.)
  */
 public class U {
-
-
 
 
 /*
@@ -57,6 +53,7 @@ public class U {
 
     /**
      * Returns configuration
+     *
      * @return 1 = Portrait, 2 = Landscape
      */
     public static int getConfiguration() {

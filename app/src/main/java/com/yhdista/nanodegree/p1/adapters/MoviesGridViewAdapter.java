@@ -48,6 +48,7 @@ public class MoviesGridViewAdapter extends BaseAdapter {
 
     /**
      * For change dataset of the Adapter
+     *
      * @param dataset
      */
     public void setDataset(List<Movie> dataset) {
@@ -143,6 +144,12 @@ public class MoviesGridViewAdapter extends BaseAdapter {
                 height = display.getHeight();
             }
 
+            if (U.getConfiguration() != Configuration.ORIENTATION_PORTRAIT) {
+                // swap numbers!!
+                width = width + height;
+                height = width - height;
+                width = width - height;
+            }
 
             PARAMS2_PORTRAIT = new AbsListView.LayoutParams(width / 2, (int) (1.5 * width / 2));
             PARAMS3_PORTRAIT = new AbsListView.LayoutParams(width / 3, (int) (1.5 * width / 3));

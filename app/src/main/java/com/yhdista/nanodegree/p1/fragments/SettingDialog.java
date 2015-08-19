@@ -13,7 +13,7 @@ import com.yhdista.nanodegree.p1.interfaces.DatasetCallbacks;
 import com.yhdista.nanodegree.p1.oodesign.SortItems;
 
 /**
- * Created by Yhdista on 19.8.2015.
+ * Setting Dialog for sorting option
  */
 public class SettingDialog extends MyBasicDialogFragment {
 

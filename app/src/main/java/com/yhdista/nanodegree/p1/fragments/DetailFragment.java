@@ -56,8 +56,8 @@ public class DetailFragment extends MyBasicFragment {
             mRatingView.setText("" + movie.getUserRating() + "/10");
             mSynopsisView.setText(movie.getOverview());
             Picasso.with(U.getCTX())
-                    .load(new StringBuilder(C.MOVIEDB_AUTHORITY_URL + C.MOVIEDB_W185
-                            + movie.getPosterPath()).toString())
+                    .load(C.MOVIEDB_AUTHORITY_URL + C.MOVIEDB_W185
+                            + movie.getPosterPath())
                     .error(R.drawable.error_round)
                     .into(new ImageHolder(mPicassoView));
 

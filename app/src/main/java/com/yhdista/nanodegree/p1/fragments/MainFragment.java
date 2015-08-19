@@ -40,7 +40,6 @@ import java.util.List;
 public class MainFragment extends MyBasicFragment implements DatasetCallbacks<Movie> {
 
     private MyBasicDialogFragment mAsyncTaskFragment;
-    private SettingDialog mSettingDialog;
 
     private MoviesGridViewAdapter mAdapter;
     private GridView mGridView;
@@ -153,26 +152,24 @@ public class MainFragment extends MyBasicFragment implements DatasetCallbacks<Mo
         changeAdapterDataset(mMovies);
     }
 
+    /**
+     * Sort movies
+     *
+     * @param which to compare
+     */
     @Override
     public void sortBy(final int which) {
-
 
         Collections.sort(mMovies, new Comparator<Movie>() {
             @Override
             public int compare(Movie lhs, Movie rhs) {
 
                 if (which == SortItems.TITLE.getPosition()) {
-
                     return lhs.getTitle().compareTo(rhs.getTitle());
-
                 } else if (which == SortItems.HIGHEST_RATED.getPosition()) {
-
-                    return compareDouble(rhs.getUserRating(), lhs.getUserRating());
-
+                    return UtilsMath.compareDouble(rhs.getUserRating(), lhs.getUserRating());
                 } else if (which == SortItems.LOWES_RATED.getPosition()) {
-
-                    return compareDouble(lhs.getUserRating(), rhs.getUserRating());
-
+                    return UtilsMath.compareDouble(lhs.getUserRating(), rhs.getUserRating());
                 }
                 return 0;
             }
@@ -181,11 +178,6 @@ public class MainFragment extends MyBasicFragment implements DatasetCallbacks<Mo
 
     }
 
-    private int compareDouble(double d1, double d2) {
-        if (d1 < d2) return -1;
-        if (d1 > d2) return 1;
-        return 0;
-    }
 
 
     private void startDetailActivity(Movie movie) {
@@ -219,9 +211,6 @@ public class MainFragment extends MyBasicFragment implements DatasetCallbacks<Mo
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-
-
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             showSetting();
@@ -231,8 +220,9 @@ public class MainFragment extends MyBasicFragment implements DatasetCallbacks<Mo
         return super.onOptionsItemSelected(item);
     }
 
+    // show sorting dialog
     private void showSetting() {
-        mSettingDialog = SettingDialog.newRetainedInstance();
+        SettingDialog mSettingDialog = SettingDialog.newRetainedInstance();
         mSettingDialog.show(mFragmentManager, C.TAG_FRAGMENT_SETTING_DIALOG);
     }
 

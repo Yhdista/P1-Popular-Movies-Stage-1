@@ -116,8 +116,7 @@ public class AsyncTaskFragment extends MyBasicDialogFragment implements AsyncTas
 
     private static class MyVolleyResponseErrorListener implements Response.ErrorListener {
 
-        // TODO nema tam byt MyBasicDialogFragment, nevim jestli resit ERROR handling tu ne
-        // nebo ve vyssim fragmentu
+        // TODO probably more to make it clear
 
         WeakReference<MyBasicDialogFragment> callback;
 
@@ -194,7 +193,7 @@ public class AsyncTaskFragment extends MyBasicDialogFragment implements AsyncTas
 
             try {
                 // just a trick to be sure to see progressbar for a moment
-                Thread.sleep(5000);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
